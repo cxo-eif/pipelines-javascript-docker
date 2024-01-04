@@ -6,8 +6,7 @@
 trigger:
  - main
 
-pool:
-  vmImage: 'ubuntu-latest' 
+pool: ADO-LX-ANTEPRD01-ArtefactPublishing
 
 variables:
   imageName: 'pipelines-javascript-docker'
@@ -17,11 +16,12 @@ steps:
   displayName: Login to Docker Hub
   inputs:
     command: login
-    containerRegistry: Private Docker Registry Eiffage [ENV DEV]
-- task: Docker@2
-  displayName: Build and Push
-  inputs:
-    command: buildAndPush
-    repository: test/cxo/testimage # username/contosoRepository for DockerHub
-    tags:
-      1.0.1
+    containerRegistry: Private Docker Registry Eiffage [ENV PRD]
+
+# - task: Docker@2
+#   displayName: Build and Push
+#   inputs:
+#     command: buildAndPush
+#     repository: testcxo/testimage # username/contosoRepository for DockerHub
+#     tags:
+#       1.0.1
